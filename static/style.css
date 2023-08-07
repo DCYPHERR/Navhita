@@ -1,0 +1,72 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: #fff;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0.5rem; */
+  padding: 3%;
+}
+.button-row > form {
+  flex: 1; /* Distribute the form tags equally within the flex container */
+  margin: 0 1rem; /* Add some margin between the form tags */
+}
+
+button {
+  padding: 2rem;
+  flex: 1;
+  margin: 0 1rem;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+  background-color: #fff;
+  color: black;
+  border: none;
+  font-size: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Set the width to 100% for all buttons */
+}
+
+button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+ 
+.sos {
+  /* margin-left: 45%;  */
+  margin-top: -4px;
+  display: grid;
+  /* flex: 1; */
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 7px; */
+}
+
+.sosb {
+  background-color: red;
+  color: white;
+}
+
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1579463395427-4f4e0b9a4b6e');
+  background-size: cover;
+  background-position: center;
+  height: calc(30vh - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  text-align: center;
+  color : red;
+}
+
+.hero p {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}

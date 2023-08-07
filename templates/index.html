@@ -1,0 +1,75 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navhita - Landing Page</title>
+    <!-- <link rel="stylesheet" href="{% static 'index.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'index.css' %}?v=3"> 
+  </head>
+  <body>
+    <header>
+      <h1>Navhita</h1>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><b>Hello {{user.patient.name}}</b></li>
+          {% endif %}
+          <li><a href="#features">Features</a></li>
+          <li><a href="{% url 'registerPatient' %}">Register</a></li>
+          <li><a href="{% url 'loginPatient' %}">Login</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <h2>Welcome to Navhita</h2>
+        <p>A software built for paralyzed individuals to help them carry out basic tasks using iris tracking technology.</p>
+        <button>Learn More</button>
+        {% if user.is_authenticated %}
+        <button onclick="window.location.href = '{% url 'sendServiceMail' %}';">Go to Services Page</button>
+        {% else %}
+        <button onclick="window.location.href = '{% url 'loginPatient' %}';">Login</button>
+        {% endif %}
+      </section>
+      <section id="features" class="features">
+        <h2>Features</h2>
+        <ul>
+          <li><i class="fas fa-check"></i>Control your environment with your eyes.</li>
+          <li><i class="fas fa-check"></i>Make calls, send messages, and access entertainment with ease.</li>
+          <li><i class="fas fa-check"></i>Customize your experience to meet your needs.</li>
+        </ul>
+      </section>
+      {% if not user.is_authenticated %}
+      <section id="register" class="register">
+        <h2>Register Now</h2>
+        <p>Join our community of caretakers and patients today.</p>
+        <div class="cards">
+          <a href="{% url 'registerPatient' %}">
+            <div class="card">
+              <h3>For Patients</h3>
+              <p>Register as a patient to access Navhita's features.</p>
+            </div>
+          </a>
+          <a href="{% url 'registerCaretaker' %}">
+            <div class="card">
+              <h3>For Caretakers</h3>
+              <p>Register as a caretaker to help someone you care for.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+      {% endif %}
+    </main>
+    <footer id="contact" class="footer">
+      <h2>Contact Us</h2>
+      <!-- <ul>
+        <li><i class="fas fa-map-marker-alt"></i>123 Main St, Anytown USA</li>
+        <li><i class="fas fa-phone"></i>(555) 555-5555</li>
+        <li><i class="fas fa-envelope"></i>info@navhita.com</li>
+      </ul> -->
+    </footer>
+  </body>
+</html>

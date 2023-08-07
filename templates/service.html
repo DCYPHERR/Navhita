@@ -1,0 +1,96 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sahayak</title>
+    <!-- <link rel="stylesheet" href="../static/style.css" /> -->
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=10" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> -->
+    <!-- GOOGLE FONTS CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section class="hero">
+      <h2>Select an Option</h2>
+      <p id="messages-container">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+      </p>
+    </section>
+    <div class="button-row">
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="water">
+      <button onclick="playAudio('water.mp3')">Water</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %} 
+        <input type="hidden" name="id" value="washroom"> 
+      <button onclick="playAudio('washroom.mp3')">Washroom</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="food">
+      <button onclick="playAudio('food.mp3')">Food</button>
+      </form>
+    </div>
+    <div class="button-row">
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="medicine">
+      <button onclick="playAudio('medicine.mp3')">Medicine</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="sleep">
+      <button onclick="playAudio('sleep.mp3')">Sleep</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="help">
+      <button onclick="playAudio('help.mp3')">Help</button>
+      </form>
+    </div>
+    <div class="button-row">
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="television">
+      <button onclick="playAudio('television.mp3')">Television</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="play">
+      <button onclick="playAudio('play.mp3')">Play</button>
+      </form>
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="others">
+      <button onclick="playAudio('others.mp3')">Others</button>
+      </form>
+    </div>
+    <div class="sos">
+      <form method="POST" action="{% url 'sendServiceMail' %}" id="water.mp3">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="sos">
+      <button class="sosb" onclick="playAudio('sos.mp3')">SOS</button>
+      </form>
+    </div>
+    <script>
+      function playAudio(filename) {
+        new Audio("{% static 'audio/' %}" + filename).play();
+        document.getElementById(filename).submit();
+      }
+      setTimeout(function() {
+        var messagesContainer = document.getElementById("messages-container");
+        messagesContainer.style.display = "none";
+      }, 10000);
+    </script>
+  </body>
+</html>
